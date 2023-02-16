@@ -1,3 +1,5 @@
+import threading
+
 from PyQt6.QtWidgets import QApplication,QMainWindow, QTextEdit, QLineEdit, QPushButton
 import sys
 from backend import Chatbot
@@ -31,8 +33,14 @@ class ChatbotWindow(QMainWindow):
         self.chat_area.append(f"<p style='color:#333333'>Me: {user_input}</p>")
         self.input_field.clear()
 
+        thread = threading.Thread(target=self.get_bot_response, args=(user_input, ))
+        thread.start()
+
+    def get_bot_response(self, user_input):
         response = self.chatbot.get_response(user_input)
         self.chat_area.append(f"<p style='color:#333333; background-color: #E9E9E9'>Bot: {response}</p>")
+
+
 
 
 app = QApplication(sys.argv)
