@@ -1,0 +1,1 @@
+# This app connects with OpenAI API to generate content
