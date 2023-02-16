@@ -28,11 +28,11 @@ class ChatbotWindow(QMainWindow):
 
     def send_message(self):
         user_input = self.input_field.text().strip()
-        self.chat_area.append(f"Me: {user_input}")
+        self.chat_area.append(f"<p style='color:#333333'>Me: {user_input}</p>")
         self.input_field.clear()
 
         response = self.chatbot.get_response(user_input)
-        self.chat_area.append(f"Bot: {response}")
+        self.chat_area.append(f"<p style='color:#333333; background-color: #E9E9E9'>Bot: {response}</p>")
 
 
 app = QApplication(sys.argv)
