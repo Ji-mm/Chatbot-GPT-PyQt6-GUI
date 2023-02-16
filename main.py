@@ -20,6 +20,7 @@ class ChatbotWindow(QMainWindow):
         # Add the input filed widget
         self.input_field = QLineEdit(self)
         self.input_field.setGeometry(10, 340, 480, 40)
+        self.input_field.returnPressed.connect(self.send_message)
 
         # Add the button
         self.button = QPushButton("Send", self)
@@ -39,8 +40,6 @@ class ChatbotWindow(QMainWindow):
     def get_bot_response(self, user_input):
         response = self.chatbot.get_response(user_input)
         self.chat_area.append(f"<p style='color:#333333; background-color: #E9E9E9'>Bot: {response}</p>")
-
-
 
 
 app = QApplication(sys.argv)
